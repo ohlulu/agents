@@ -1,29 +1,23 @@
 # AGENTS.MD
 
-Peter owns this. Start: say hi + 1 motivating line.
-Work style: telegraph; noun-phrases ok; drop grammar; min tokens.
-
 ## Agent Protocol
-- Contact: Peter Steinberger (@steipete, steipete@gmail.com).
-- Workspace: `~/Projects`. Missing steipete repo: clone `https://github.com/steipete/<repo>.git`.
-- 3rd-party/OSS (non-steipete): clone under `~/Projects/oss`.
-- `~/Projects/manager`: private ops (domains/DNS, redirects/workers, runbooks).
+- Workspace: `~/Developer`. Folder pattern: `~/Developer/<owner>/<project-name>`.
 - “MacBook” / “Mac Studio” => SSH there; find hosts/IPs via `tailscale status`.
-- Files: repo or `~/Projects/agent-scripts`.
+- Files: repo or `~/Developer/ohlulu/agents`.
 - PRs: use `gh pr view/diff` (no URLs).
 - “Make a note” => edit AGENTS.md (shortcut; not a blocker). Ignore `CLAUDE.md`.
-- No `./runner`. Guardrails: use `trash` for deletes.
+- Guardrails: use `trash` for deletes.
 - Need upstream file: stage in `/tmp/`, then cherry-pick; never overwrite tracked.
 - Bugs: add regression test when it fits.
-- Keep files <~500 LOC; split/refactor as needed.
+- Keep files <~500 LOC; up to 800 allowed if justified; split/refactor as needed.
 - Commits: Conventional Commits (`feat|fix|refactor|build|ci|chore|docs|style|perf|test`).
-- Subagents: read `docs/subagent.md`.
-- Editor: `code <path>`.
+- Subagents: read `~/Developer/ohlulu/agents/subagent.md`.
+- Editor: `cursor <path>`.
 - CI: `gh run list/view` (rerun/fix til green).
 - Prefer end-to-end verify; if blocked, say what’s missing.
 - New deps: quick health check (recent releases/commits, adoption).
-- Slash cmds: `~/.codex/prompts/`.
-- Web: search early; quote exact errors; prefer 2024–2025 sources; fallback Firecrawl (`pnpm mcp:*`) / `mcporter`.
+- Slash cmds: `~/.claude/commands`.
+- Web: search early; quote exact errors; prefer 2024–2025 sources; fallback Firecrawl (`pnpm mcp:*`).
 - Oracle: run `npx -y @steipete/oracle --help` once/session before first use.
 - Style: telegraph. Drop filler/grammar. Min tokens (global AGENTS + replies).
 
@@ -34,13 +28,6 @@ Work style: telegraph; noun-phrases ok; drop grammar; min tokens.
 - Optimize: `imageoptim <file>` (install: `brew install imageoptim-cli`).
 - Replace asset; keep dimensions; commit; run gate; verify CI.
 
-## Important Locations
-- Blog repo: `~/Projects/steipete.me`
-- Notes/Runbooks: `~/Projects/manager/docs/` (e.g. `mac-studio.md`, `mac-vm.md`)
-- OpenAI/Codex limits tracking: `~/Documents/steipete/codex limits.md`
-- Obsidian vault: `$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/steipete-notes`
-- Sparkle keys: `~/Library/CloudStorage/Dropbox/Backup/Sparkle`
-
 ## Docs
 - Start: run docs list (`docs:list` script, or `bin/docs-list` here if present; ignore if not installed); open docs before coding.
 - Follow links until domain makes sense; honor `Read when` hints.
@@ -49,22 +36,15 @@ Work style: telegraph; noun-phrases ok; drop grammar; min tokens.
 - Model note (2025-11-23): no `gpt-5.1-pro` / `grok-4.1` on Peter’s keys yet.
 - Model preference: latest only. OK: Anthropic Opus 4.5 / Sonnet 4.5 (Sonnet 3.5 = old; avoid), OpenAI GPT-5.2, xAI Grok-4.1 Fast, Google Gemini 3 Flash.
 
-## PR Feedback
-- Active PR: `gh pr view --json number,title,url --jq '"PR #\\(.number): \\(.title)\\n\\(.url)"'`.
-- PR comments: `gh pr view …` + `gh api …/comments --paginate`.
-- Replies: cite fix + file/line; resolve threads only after fix lands.
-- When merging a PR: thank the contributor in `CHANGELOG.md`.
-
 ## Flow & Runtime
 - Use repo’s package manager/runtime; no swaps w/o approval.
-- Use Codex background for long jobs; tmux only for interactive/persistent (debugger/server).
+- Use subagents background for long jobs;
 
 ## Build / Test
 - Before handoff: run full gate (lint/typecheck/tests/docs).
 - CI red: `gh run list/view`, rerun, fix, push, repeat til green.
 - Keep it observable (logs, panes, tails, MCP/browser tools).
 - Release: read `docs/RELEASING.md` (or find best checklist if missing).
-- Reminder: check `~/.profile` for missing env keys (e.g. `SPARKLE_PRIVATE_KEY_FILE`); Sparkle keys live in `~/Library/CloudStorage/Dropbox/Backup/Sparkle`.
 
 ## Git
 - Safe by default: `git status/diff/log`. Push only when user asks.
@@ -97,7 +77,7 @@ Work style: telegraph; noun-phrases ok; drop grammar; min tokens.
 
 ## Tools
 
-Read `~/Projects/agent-scripts/tools.md` for the full tool catalog if it exists.
+Read `~/Developer/ohlulu/agents/tools.md` for the full tool catalog if it exists.
 
 ### bird
 - X CLI: `~/Projects/bird/bird`. Cmds: `tweet`, `reply`, `read`, `thread`, `search`, `mentions`, `whoami`.
