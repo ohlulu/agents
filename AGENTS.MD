@@ -33,8 +33,6 @@
 - Follow links until domain makes sense; honor `Read when` hints.
 - Keep notes short; update docs when behavior/API changes (no ship w/o docs).
 - Add `read_when` hints on cross-cutting docs.
-- Model note (2025-11-23): no `gpt-5.1-pro` / `grok-4.1` on Peter’s keys yet.
-- Model preference: latest only. OK: Anthropic Opus 4.5 / Sonnet 4.5 (Sonnet 3.5 = old; avoid), OpenAI GPT-5.2, xAI Grok-4.1 Fast, Google Gemini 3 Flash.
 
 ## Flow & Runtime
 - Use repo’s package manager/runtime; no swaps w/o approval.
@@ -132,7 +130,7 @@ Read `~/Developer/ohlulu/agents/tools.md` for the full tool catalog if it exists
 - Examples: `gh issue view <url> --comments -R owner/repo`, `gh pr view <url> --comments --files -R owner/repo`.
 
 ### Slash Commands
-- Global: `~/.codex/prompts/`. Repo-local: `docs/slash-commands/`.
+- Global: `~/.claude/commands`. Repo-local: `docs/slash-commands/`.
 - Common: `/handoff`, `/pickup`.
 
 ### tmux
